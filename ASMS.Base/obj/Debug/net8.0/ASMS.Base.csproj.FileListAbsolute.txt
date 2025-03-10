@@ -1,0 +1,11 @@
+C:\Users\jiejo\source\repos\ASMS\ASMS.Base\bin\Debug\net8.0\ASMS.Base.deps.json
+C:\Users\jiejo\source\repos\ASMS\ASMS.Base\bin\Debug\net8.0\ASMS.Base.dll
+C:\Users\jiejo\source\repos\ASMS\ASMS.Base\bin\Debug\net8.0\ASMS.Base.pdb
+C:\Users\jiejo\source\repos\ASMS\ASMS.Base\obj\Debug\net8.0\ASMS.Base.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jiejo\source\repos\ASMS\ASMS.Base\obj\Debug\net8.0\ASMS.Base.AssemblyInfoInputs.cache
+C:\Users\jiejo\source\repos\ASMS\ASMS.Base\obj\Debug\net8.0\ASMS.Base.AssemblyInfo.cs
+C:\Users\jiejo\source\repos\ASMS\ASMS.Base\obj\Debug\net8.0\ASMS.Base.csproj.CoreCompileInputs.cache
+C:\Users\jiejo\source\repos\ASMS\ASMS.Base\obj\Debug\net8.0\ASMS.Base.dll
+C:\Users\jiejo\source\repos\ASMS\ASMS.Base\obj\Debug\net8.0\refint\ASMS.Base.dll
+C:\Users\jiejo\source\repos\ASMS\ASMS.Base\obj\Debug\net8.0\ASMS.Base.pdb
+C:\Users\jiejo\source\repos\ASMS\ASMS.Base\obj\Debug\net8.0\ref\ASMS.Base.dll

@@ -1,0 +1,6 @@
+@ASMS.API_HostAddress = http://localhost:5125
+
+GET {{ASMS.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

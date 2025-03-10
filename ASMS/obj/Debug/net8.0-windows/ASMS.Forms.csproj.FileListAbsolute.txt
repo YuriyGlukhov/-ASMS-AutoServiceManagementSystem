@@ -1,0 +1,16 @@
+C:\Users\jiejo\source\repos\ASMS\ASMS\bin\Debug\net8.0-windows\ASMS.Forms.exe
+C:\Users\jiejo\source\repos\ASMS\ASMS\bin\Debug\net8.0-windows\ASMS.Forms.deps.json
+C:\Users\jiejo\source\repos\ASMS\ASMS\bin\Debug\net8.0-windows\ASMS.Forms.runtimeconfig.json
+C:\Users\jiejo\source\repos\ASMS\ASMS\bin\Debug\net8.0-windows\ASMS.Forms.dll
+C:\Users\jiejo\source\repos\ASMS\ASMS\bin\Debug\net8.0-windows\ASMS.Forms.pdb
+C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.Form1.resources
+C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.csproj.GenerateResource.cache
+C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.AssemblyInfoInputs.cache
+C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.AssemblyInfo.cs
+C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.csproj.CoreCompileInputs.cache
+C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.dll
+C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\refint\ASMS.Forms.dll
+C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.pdb
+C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.genruntimeconfig.cache
+C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ref\ASMS.Forms.dll

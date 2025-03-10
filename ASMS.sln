@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASMS.Forms", "ASMS\ASMS.Forms.csproj", "{E2A2D721-443F-45B7-B43E-91C847DC56C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASMS.API", "ASMS.API\ASMS.API.csproj", "{3DB6AAFA-F500-4C7E-99CC-CFFCF9A4AE69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASMS.Base", "ASMS.Base\ASMS.Base.csproj", "{E6E5D423-009C-4DA5-97CE-DCD47ABEC2BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2A2D721-443F-45B7-B43E-91C847DC56C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2A2D721-443F-45B7-B43E-91C847DC56C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2A2D721-443F-45B7-B43E-91C847DC56C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2A2D721-443F-45B7-B43E-91C847DC56C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DB6AAFA-F500-4C7E-99CC-CFFCF9A4AE69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DB6AAFA-F500-4C7E-99CC-CFFCF9A4AE69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DB6AAFA-F500-4C7E-99CC-CFFCF9A4AE69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DB6AAFA-F500-4C7E-99CC-CFFCF9A4AE69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6E5D423-009C-4DA5-97CE-DCD47ABEC2BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6E5D423-009C-4DA5-97CE-DCD47ABEC2BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6E5D423-009C-4DA5-97CE-DCD47ABEC2BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6E5D423-009C-4DA5-97CE-DCD47ABEC2BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2494D05A-0DDF-4033-9462-57C2DB139945}
+	EndGlobalSection
+EndGlobal
