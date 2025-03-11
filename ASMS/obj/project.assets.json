@@ -8,24 +8,24 @@
     "net8.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\jiejo\\.nuget\\packages\\": {},
-    "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages": {}
+    "C:\\Users\\Ирина\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jiejo\\source\\repos\\ASMS\\ASMS\\ASMS.Forms.csproj",
+      "projectUniqueName": "C:\\Users\\Ирина\\Source\\Repos\\-ASMS-AutoServiceManagerSystem\\ASMS\\ASMS.Forms.csproj",
       "projectName": "ASMS.Forms",
-      "projectPath": "C:\\Users\\jiejo\\source\\repos\\ASMS\\ASMS\\ASMS.Forms.csproj",
-      "packagesPath": "C:\\Users\\jiejo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jiejo\\source\\repos\\ASMS\\ASMS\\obj\\",
+      "projectPath": "C:\\Users\\Ирина\\Source\\Repos\\-ASMS-AutoServiceManagerSystem\\ASMS\\ASMS.Forms.csproj",
+      "packagesPath": "C:\\Users\\Ирина\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ирина\\Source\\Repos\\-ASMS-AutoServiceManagerSystem\\ASMS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\jiejo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.2.config",
+        "C:\\Users\\Ирина\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -33,7 +33,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\DevExpress 22.2\\Components\\System\\Components\\Packages": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
@@ -52,7 +51,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0-windows7.0": {
@@ -76,7 +76,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
