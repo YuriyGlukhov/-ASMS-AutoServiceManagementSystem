@@ -4,15 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ASMS.Base.Entities
+namespace ASMS.Base.Models
 {
-    public class Client
+   public class ClientDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string? Phone { get; set; }
-        public DateTime BirthDay { get; set; }
-        public List<Car> Cars { get; set; } = new List<Car>();
-        public List<Order> Orders { get; set; } = new List<Order>();
+
     }
 }
