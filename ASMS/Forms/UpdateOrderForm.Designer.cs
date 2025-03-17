@@ -155,6 +155,8 @@
             comboBoxOrderStatus.Name = "comboBoxOrderStatus";
             comboBoxOrderStatus.Size = new Size(175, 28);
             comboBoxOrderStatus.TabIndex = 55;
+            comboBoxOrderStatus.SelectedIndexChanged += comboBoxOrderStatus_SelectedIndexChanged;
+          /*  c*//*omboBoxOrderStatus.TextChanged += comboBoxOrderStatus_TextChanged;*/
             // 
             // AddClientButton
             // 

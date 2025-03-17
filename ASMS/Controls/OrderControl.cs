@@ -24,7 +24,7 @@ namespace ASMS.Forms.Controls
         private readonly IEntityService<ServiceDTO> _serviceService;
         private readonly IClientsCarService _clientsCarService;
 
-        private OrderDTO orderDTO;
+        private OrderDTO orderDTO = new OrderDTO();
         private List<ServiceDTO> servicesList = new List<ServiceDTO>();
         public OrderControl(
                     IEntityService<ClientDTO> clientService,
@@ -82,16 +82,14 @@ namespace ASMS.Forms.Controls
                         }
                     }
 
-                    orderDTO = new OrderDTO
-                    {
-                        Id = Convert.ToInt32(selectedRow.Cells["Id"].Value),
-                        Description = selectedRow.Cells["Description"].Value?.ToString() ?? string.Empty,
-                        OrderDate = Convert.ToDateTime(selectedRow.Cells["OrderDate"].Value).ToUniversalTime(),
-                        Status = ParseOrderStatus(selectedRow.Cells["Status"].Value),
-                        ClientId = Convert.ToInt32(selectedRow.Cells["ClientId"].Value),
-                        CarId = Convert.ToInt32(selectedRow.Cells["CarId"].Value),
-                        Services = servicesList
-                    };
+                    orderDTO.Id = Convert.ToInt32(selectedRow.Cells["Id"].Value);
+                    orderDTO.Description = selectedRow.Cells["Description"].Value?.ToString() ?? string.Empty;
+                    orderDTO.OrderDate = Convert.ToDateTime(selectedRow.Cells["OrderDate"].Value).ToUniversalTime();
+                    orderDTO.Status = ParseOrderStatus(selectedRow.Cells["Status"].Value);
+                    orderDTO.ClientId = Convert.ToInt32(selectedRow.Cells["ClientId"].Value);
+                    orderDTO.CarId = Convert.ToInt32(selectedRow.Cells["CarId"].Value);
+                    orderDTO.Services = servicesList;
+                  
 
                     selectedRow.Selected = true;
                 }
@@ -146,7 +144,7 @@ namespace ASMS.Forms.Controls
         {
             if (statusValue == null) return OrderStatus.Created;
 
-            string statusString = statusValue.ToString()?.Trim(); // Убираем пробелы и лишние символы
+            string statusString = statusValue.ToString()?.Trim(); 
             switch (statusString)
             {
                 case "Created":

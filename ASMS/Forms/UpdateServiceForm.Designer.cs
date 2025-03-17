@@ -75,6 +75,7 @@
             BrandBox.Name = "BrandBox";
             BrandBox.Size = new Size(134, 27);
             BrandBox.TabIndex = 47;
+            BrandBox.TextChanged += BrandBox_TextChanged;
             // 
             // DescriptionBox
             // 
@@ -83,6 +84,7 @@
             DescriptionBox.Name = "DescriptionBox";
             DescriptionBox.Size = new Size(182, 53);
             DescriptionBox.TabIndex = 46;
+            DescriptionBox.TextChanged += DescriptionBox_TextChanged;
             // 
             // CancelButton
             // 
@@ -130,6 +132,7 @@
             ServiceName.Size = new Size(108, 46);
             ServiceName.TabIndex = 41;
             ServiceName.Text = "Название услуги/товара";
+            
             // 
             // PriceBox
             // 
@@ -137,6 +140,7 @@
             PriceBox.Name = "PriceBox";
             PriceBox.Size = new Size(134, 27);
             PriceBox.TabIndex = 40;
+            PriceBox.TextChanged += PriceBox_TextChanged;
             // 
             // NameBox
             // 
@@ -145,6 +149,7 @@
             NameBox.Name = "NameBox";
             NameBox.Size = new Size(182, 46);
             NameBox.TabIndex = 39;
+            NameBox.TextChanged += NameBox_TextChanged;
             // 
             // UpdateServiceForm
             // 

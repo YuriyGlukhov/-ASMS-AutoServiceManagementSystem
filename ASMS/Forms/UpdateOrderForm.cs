@@ -45,11 +45,12 @@ namespace ASMS.Forms.Forms
 
         private void UpdateOrderForm_Load(object sender, EventArgs e)
         {
+            var tempStatus = _orderDTO.Status;
             LoadComboBoxData();
 
             comboBoxCars.SelectedValue = _orderDTO.CarId;
             comboBoxClients.SelectedValue = _orderDTO.ClientId;
-            comboBoxOrderStatus.SelectedItem = _orderDTO.Status;
+            comboBoxOrderStatus.SelectedItem = tempStatus;
             DescriptionBox.Text = _orderDTO.Description;
 
             if (_orderDTO.Services.Any())
@@ -78,8 +79,9 @@ namespace ASMS.Forms.Forms
             comboBoxCars.DataSource = cars;
             comboBoxCars.DisplayMember = "DisplayText";
             comboBoxCars.ValueMember = "Id";
-
+       
             comboBoxOrderStatus.DataSource = Enum.GetValues(typeof(OrderStatus));
+            
 
         }
         private void comboBoxCars_DropDown(object sender, EventArgs e)
@@ -122,7 +124,8 @@ namespace ASMS.Forms.Forms
                 var tempServiceList = new List<ServiceDTO>();
                 foreach (var service in services)
                 {
-                    if (service.CarBrand == selectedCarBrand || service.CarBrand == "All")
+                    if (service.CarBrand.ToLower() == selectedCarBrand.ToLower()
+                        || service.CarBrand.ToLower() == "All".ToLower())
                     {
                         tempServiceList.Add(service);
                     }
@@ -145,6 +148,7 @@ namespace ASMS.Forms.Forms
 
         private void DescriptionBox_TextChanged(object sender, EventArgs e)
         {
+
         }
 
         private void comboBoxCars_TextChanged(object sender, EventArgs e)
@@ -216,6 +220,11 @@ namespace ASMS.Forms.Forms
             var addServiceForm = new AddServiceForm(_serviceService);
             addServiceForm.ShowDialog();
             LoadComboBoxData();
+        }
+
+        private void comboBoxOrderStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _orderDTO.Status = (OrderStatus)comboBoxOrderStatus.SelectedValue;
         }
     }
 }
