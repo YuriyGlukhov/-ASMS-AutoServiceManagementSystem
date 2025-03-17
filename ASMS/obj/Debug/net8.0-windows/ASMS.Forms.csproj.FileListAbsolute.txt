@@ -94,7 +94,6 @@ C:\Users\jiejo\source\repos\ASMS\ASMS\bin\Debug\net8.0-windows\Microsoft.Extensi
 C:\Users\jiejo\source\repos\ASMS\ASMS\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
 C:\Users\jiejo\source\repos\ASMS\ASMS\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
 C:\Users\jiejo\source\repos\ASMS\ASMS\bin\Debug\net8.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
-C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.Forms.UpdateClientFrom.resources
 C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.Controls.CarControl.resources
 C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.Forms.AddCarForm.resources
 C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.Forms.UpdateCarForm.resources
@@ -102,3 +101,7 @@ C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.Forms.
 C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.Forms.UpdateOrderForm.resources
 C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.Forms.AddServiceForm.resources
 C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.Forms.UpdateServiceForm.resources
+C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.Properties.Resources.resources
+C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.Forms.BindingClientsAndCars.resources
+C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.Forms.UnBindingClientsAndCars.resources
+C:\Users\jiejo\source\repos\ASMS\ASMS\obj\Debug\net8.0-windows\ASMS.Forms.Forms.UpdateClientForm.resources

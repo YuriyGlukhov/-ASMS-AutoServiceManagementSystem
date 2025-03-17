@@ -16,25 +16,23 @@ namespace ASMS.Forms
         [STAThread]
         static void Main()
         {
-            // Настроим конфигурацию для получения строки подключения
             var configuration = new ConfigurationBuilder()
-                .SetBasePath(@"C:\Users\jiejo\source\repos\ASMS\ASMS.Base")  // Путь к файлу конфигурации
+                .SetBasePath(@"C:\Users\jiejo\source\repos\ASMS\ASMS.Base")  
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .Build();
 
-            // Получаем строку подключения
             var connectionString = configuration.GetConnectionString("db");
 
-            // Настроим контейнер зависимостей
             var serviceProvider = new ServiceCollection()
-                .AddSingleton(connectionString)  // Регистрируем строку подключения как Singleton
+                .AddSingleton(connectionString)  
                 .AddScoped<IEntityService<ClientDTO>, ClientService>()
                 .AddScoped<IEntityService<CarDTO>, CarService>()
                 .AddScoped<IEntityService<OrderDTO>, OrderService>()
                 .AddScoped<IEntityService<ServiceDTO>, ServiceService>()
-                .AddScoped<MainMenu>()  // Регистрируем MainMenu
+                .AddScoped<IClientsCarService, ClientsCarService>()
+                .AddScoped<MainMenu>()  
                 .AddDbContext<ASMSDbContext>((serviceProvider, options) =>
-                    options.UseNpgsql(serviceProvider.GetRequiredService<string>())  // Получаем строку подключения из DI
+                    options.UseNpgsql(serviceProvider.GetRequiredService<string>())
                 )
                 .AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies())
                 .BuildServiceProvider();

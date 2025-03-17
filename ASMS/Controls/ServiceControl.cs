@@ -34,11 +34,11 @@ namespace ASMS.Forms.Controls
             var services = _serviceService.Get();
             dataGridViewServices.DataSource = services;
         }
-        private void dataGridViewServices_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewServices_SelectionChanged(object sender, EventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (dataGridViewServices.CurrentRow == null) return;
             {
-                var selectedRow = dataGridViewServices.Rows[e.RowIndex];
+                var selectedRow = dataGridViewServices.CurrentRow;
 
                 try
                 {

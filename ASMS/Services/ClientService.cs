@@ -44,6 +44,10 @@ namespace ASMS.Forms.Services
         public List<ClientDTO> Get()
         {
             var clients = _context.Clients.Select(x => _mapper.Map<ClientDTO>(x)).ToList();
+            foreach (var client in clients)
+            {
+                client.BirthDay = client.BirthDay.Date;
+            }
             return clients;
 
         }

@@ -23,50 +23,68 @@ namespace ASMS.Forms
         private readonly IEntityService<CarDTO> _carService;
         private readonly IEntityService<OrderDTO> _orderService;
         private readonly IEntityService<ServiceDTO> _serviceService;
+        private readonly IClientsCarService _clientsCarService;
         public MainMenu(IEntityService<ClientDTO> clientService,
                     IEntityService<CarDTO> carService,
                     IEntityService<OrderDTO> orderService,
                     IEntityService<ServiceDTO> serviceService,
+                    IClientsCarService clientsCarService,
                     ASMSDbContext context)
         {
             _clientService = clientService;
             _carService = carService;
             _orderService = orderService;
             _serviceService = serviceService;
+            _clientsCarService = clientsCarService;
             _context = context;
             InitializeComponent();
+            LoadControl();
+        }
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+            
+        }
+        private void LoadControl()
+        {
+            var clientControl = new ClientControl(_clientService, _clientsCarService, _carService);
+            clientControl.Dock = DockStyle.Fill;
+            ControlMenu?.SelectedTab?.Controls.Add(clientControl);
+        }
+        private void ControlMenu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedTab = ControlMenu.SelectedTab;
+            if (selectedTab == null) return;
+
+            selectedTab.Controls.Clear();
+
+            switch (selectedTab.Name)
+            {
+                case "ClientControl":
+                    var clientControl = new ClientControl(_clientService, _clientsCarService, _carService) { Dock = DockStyle.Fill };
+                    selectedTab.Controls.Add(clientControl);
+                    break;
+
+                case "CarControl":
+                    var carControl = new CarControl(_carService, _clientsCarService,_clientService) { Dock = DockStyle.Fill };
+                    selectedTab.Controls.Add(carControl);
+                    break;
+
+                case "OrderControler":
+                    var orderControl = new OrderControl(_clientService, _carService, _orderService, _serviceService,_clientsCarService) { Dock = DockStyle.Fill };
+                    selectedTab.Controls.Add(orderControl);
+                    break;
+
+                case "ServiceControl":
+                    var serviceControl = new ServiceControl(_serviceService) { Dock = DockStyle.Fill };
+                    selectedTab.Controls.Add(serviceControl);
+                    break;
+            }
         }
 
         private void ClientControl_Click(object sender, EventArgs e)
         {
-            var clientControl = new ClientControl(_clientService);
-            clientControl.Dock = DockStyle.Fill;
-            this.Controls.Add(clientControl);
-            clientControl.Visible = true;
-        }
 
-        private void CarControl_Click(object sender, EventArgs e)
-        {
-            var carControl = new CarControl(_carService);
-            carControl.Dock = DockStyle.Fill;
-            this.Controls.Add(carControl);
-            carControl.Visible = true;
-        }
-
-        private void OrderControl_Click(object sender, EventArgs e)
-        {
-            var orderControl = new OrderControl(_clientService, _carService, _orderService, _serviceService);
-            orderControl.Dock = DockStyle.Fill;
-            this.Controls.Add(orderControl);
-            orderControl.Visible = true;
-        }
-
-        private void ServiceControl_Click(object sender, EventArgs e)
-        {
-            var serviceControl = new ServiceControl(_serviceService);
-            serviceControl.Dock = DockStyle.Fill;
-            this.Controls.Add(serviceControl);
-            serviceControl.Visible = true;
         }
     }
 }

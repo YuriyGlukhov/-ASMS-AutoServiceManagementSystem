@@ -44,7 +44,7 @@
             // 
             // CancelButton
             // 
-            CancelButton.Location = new Point(600, 252);
+            CancelButton.Location = new Point(259, 333);
             CancelButton.Name = "CancelButton";
             CancelButton.Size = new Size(94, 29);
             CancelButton.TabIndex = 21;
@@ -54,7 +54,7 @@
             // 
             // AddCarButton
             // 
-            AddCarButton.Location = new Point(600, 169);
+            AddCarButton.Location = new Point(118, 333);
             AddCarButton.Name = "AddCarButton";
             AddCarButton.Size = new Size(94, 29);
             AddCarButton.TabIndex = 19;
@@ -65,7 +65,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(159, 219);
+            label4.Location = new Point(128, 164);
             label4.Name = "label4";
             label4.Size = new Size(85, 20);
             label4.TabIndex = 18;
@@ -74,7 +74,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(180, 178);
+            label3.Location = new Point(149, 123);
             label3.Name = "label3";
             label3.Size = new Size(63, 20);
             label3.TabIndex = 17;
@@ -83,16 +83,15 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(189, 127);
+            label2.Location = new Point(158, 72);
             label2.Name = "label2";
             label2.Size = new Size(54, 20);
             label2.TabIndex = 16;
             label2.Text = "Марка";
-            label2.Click += label2_Click;
             // 
             // RegNumberBox
             // 
-            RegNumberBox.Location = new Point(250, 216);
+            RegNumberBox.Location = new Point(219, 161);
             RegNumberBox.Name = "RegNumberBox";
             RegNumberBox.Size = new Size(134, 27);
             RegNumberBox.TabIndex = 15;
@@ -100,7 +99,7 @@
             // 
             // BrandBox
             // 
-            BrandBox.Location = new Point(250, 124);
+            BrandBox.Location = new Point(219, 69);
             BrandBox.Name = "BrandBox";
             BrandBox.Size = new Size(134, 27);
             BrandBox.TabIndex = 14;
@@ -108,7 +107,7 @@
             // 
             // ModelBox
             // 
-            ModelBox.Location = new Point(249, 171);
+            ModelBox.Location = new Point(218, 116);
             ModelBox.Name = "ModelBox";
             ModelBox.Size = new Size(135, 27);
             ModelBox.TabIndex = 22;
@@ -117,25 +116,23 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(214, 262);
+            label1.Location = new Point(183, 207);
             label1.Name = "label1";
             label1.Size = new Size(30, 20);
             label1.TabIndex = 24;
             label1.Text = "Vin";
-            label1.Click += label1_Click;
             // 
             // VinBox
             // 
-            VinBox.Location = new Point(250, 262);
+            VinBox.Location = new Point(219, 207);
             VinBox.Name = "VinBox";
             VinBox.Size = new Size(134, 27);
             VinBox.TabIndex = 23;
-            VinBox.TextChanged += VinBox_TextChanged;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(149, 308);
+            label5.Location = new Point(118, 253);
             label5.Name = "label5";
             label5.Size = new Size(94, 20);
             label5.TabIndex = 26;
@@ -143,17 +140,16 @@
             // 
             // YearBox
             // 
-            YearBox.Location = new Point(250, 305);
+            YearBox.Location = new Point(219, 250);
             YearBox.Name = "YearBox";
             YearBox.Size = new Size(134, 27);
             YearBox.TabIndex = 25;
-            YearBox.TextChanged += YearBox_TextChanged;
             // 
             // AddCarForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(511, 450);
             Controls.Add(label5);
             Controls.Add(YearBox);
             Controls.Add(label1);
@@ -167,6 +163,7 @@
             Controls.Add(RegNumberBox);
             Controls.Add(BrandBox);
             Name = "AddCarForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "AddCarForm";
             ResumeLayout(false);
             PerformLayout();

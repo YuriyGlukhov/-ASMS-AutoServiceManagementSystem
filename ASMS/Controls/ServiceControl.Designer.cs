@@ -33,70 +33,86 @@
             buttonAddService = new Button();
             buttonGetServices = new Button();
             dataGridViewServices = new DataGridView();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewServices).BeginInit();
             SuspendLayout();
             // 
             // buttonDeleteService
             // 
-            buttonDeleteService.Location = new Point(1003, 486);
+            buttonDeleteService.BackColor = Color.Brown;
+            buttonDeleteService.Location = new Point(379, 426);
             buttonDeleteService.Name = "buttonDeleteService";
-            buttonDeleteService.Size = new Size(175, 60);
+            buttonDeleteService.Size = new Size(118, 44);
             buttonDeleteService.TabIndex = 14;
             buttonDeleteService.Text = "Удалить";
-            buttonDeleteService.UseVisualStyleBackColor = true;
+            buttonDeleteService.UseVisualStyleBackColor = false;
             buttonDeleteService.Click += buttonDeleteService_Click;
             // 
             // buttonUpdateService
             // 
-            buttonUpdateService.Location = new Point(1003, 388);
+            buttonUpdateService.BackColor = SystemColors.Highlight;
+            buttonUpdateService.Location = new Point(264, 426);
             buttonUpdateService.Name = "buttonUpdateService";
-            buttonUpdateService.Size = new Size(175, 60);
+            buttonUpdateService.Size = new Size(118, 44);
             buttonUpdateService.TabIndex = 13;
             buttonUpdateService.Text = "Изменить";
-            buttonUpdateService.UseVisualStyleBackColor = true;
+            buttonUpdateService.UseVisualStyleBackColor = false;
             buttonUpdateService.Click += buttonUpdateService_Click;
             // 
             // buttonAddService
             // 
-            buttonAddService.Location = new Point(1003, 287);
+            buttonAddService.BackColor = Color.ForestGreen;
+            buttonAddService.Location = new Point(149, 426);
             buttonAddService.Name = "buttonAddService";
-            buttonAddService.Size = new Size(175, 60);
+            buttonAddService.Size = new Size(118, 44);
             buttonAddService.TabIndex = 12;
             buttonAddService.Text = "Добавить";
-            buttonAddService.UseVisualStyleBackColor = true;
+            buttonAddService.UseVisualStyleBackColor = false;
             buttonAddService.Click += buttonAddService_Click;
             // 
             // buttonGetServices
             // 
-            buttonGetServices.Location = new Point(1003, 189);
+            buttonGetServices.BackColor = SystemColors.ActiveBorder;
+            buttonGetServices.Location = new Point(34, 426);
             buttonGetServices.Name = "buttonGetServices";
-            buttonGetServices.Size = new Size(175, 60);
+            buttonGetServices.Size = new Size(118, 44);
             buttonGetServices.TabIndex = 11;
             buttonGetServices.Text = "Обновить";
-            buttonGetServices.UseVisualStyleBackColor = true;
+            buttonGetServices.UseVisualStyleBackColor = false;
             buttonGetServices.Click += buttonGetServices_Click;
             // 
             // dataGridViewServices
             // 
+            dataGridViewServices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewServices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewServices.Location = new Point(92, 106);
+            dataGridViewServices.Location = new Point(21, 78);
             dataGridViewServices.Name = "dataGridViewServices";
             dataGridViewServices.RowHeadersWidth = 51;
-            dataGridViewServices.Size = new Size(883, 440);
+            dataGridViewServices.Size = new Size(1259, 342);
             dataGridViewServices.TabIndex = 10;
-            dataGridViewServices.CellContentClick += dataGridViewServices_CellContentClick;
+            dataGridViewServices.SelectionChanged += dataGridViewServices_SelectionChanged;
+            // 
+            // label1
+            // 
+            label1.Font = new Font("Segoe UI", 18F);
+            label1.Location = new Point(550, 22);
+            label1.Name = "label1";
+            label1.Size = new Size(241, 40);
+            label1.TabIndex = 15;
+            label1.Text = "Услуги и товары";
             // 
             // ServiceControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label1);
             Controls.Add(buttonDeleteService);
             Controls.Add(buttonUpdateService);
             Controls.Add(buttonAddService);
             Controls.Add(buttonGetServices);
             Controls.Add(dataGridViewServices);
             Name = "ServiceControl";
-            Size = new Size(1271, 653);
+            Size = new Size(1297, 677);
             Load += ServiceControl_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewServices).EndInit();
             ResumeLayout(false);
@@ -109,5 +125,6 @@
         private Button buttonAddService;
         private Button buttonGetServices;
         private DataGridView dataGridViewServices;
+        private Label label1;
     }
 }

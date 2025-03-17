@@ -47,6 +47,8 @@ namespace ASMS.Forms.Forms
                 Year = int.Parse(YearBox.Text)
             };
             _carService.Add(car);
+
+            this.Close();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -54,24 +56,5 @@ namespace ASMS.Forms.Forms
             this.Close();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void VinBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void YearBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

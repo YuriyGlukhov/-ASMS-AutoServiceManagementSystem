@@ -17,12 +17,12 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ASMS.Forms.Forms
 {
-    public partial class UpdateClientFrom : Form
+    public partial class UpdateClientForm : Form
     {
         private readonly IEntityService<ClientDTO> _clientService;
         private ClientDTO _client;
 
-        public UpdateClientFrom(IEntityService<ClientDTO> clientService, ClientDTO client)
+        public UpdateClientForm(IEntityService<ClientDTO> clientService, ClientDTO client)
         {
             _clientService = clientService;
             _client = client;
@@ -51,15 +51,14 @@ namespace ASMS.Forms.Forms
         {
             string birthDateText = BithdayBox.Text;
 
-            // Очищаем строку от символов маски
             string cleanDateText = birthDateText.Replace("/", "").Replace("-", "").Replace(".", "");
 
-            if (cleanDateText.Length == 8) // Если строка содержит 8 символов (ддммгггг)
+            if (cleanDateText.Length == 8) 
             {
                 DateTime birthDate;
                 if (DateTime.TryParseExact(cleanDateText, "ddMMyyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out birthDate))
                 {
-                    _client.BirthDay = birthDate.ToUniversalTime();  // Сохраняем дату в объект _client
+                    _client.BirthDay = birthDate.ToUniversalTime(); 
                 }
                 else
                 {

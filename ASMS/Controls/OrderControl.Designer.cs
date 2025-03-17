@@ -33,70 +33,86 @@
             buttonAddOrder = new Button();
             buttonAddGetOrder = new Button();
             dataGridViewOrders = new DataGridView();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewOrders).BeginInit();
             SuspendLayout();
             // 
             // buttonDeleteOrder
             // 
-            buttonDeleteOrder.Location = new Point(1073, 665);
+            buttonDeleteOrder.BackColor = Color.Brown;
+            buttonDeleteOrder.Location = new Point(379, 426);
             buttonDeleteOrder.Name = "buttonDeleteOrder";
-            buttonDeleteOrder.Size = new Size(175, 46);
+            buttonDeleteOrder.Size = new Size(118, 44);
             buttonDeleteOrder.TabIndex = 9;
             buttonDeleteOrder.Text = "Удалить";
-            buttonDeleteOrder.UseVisualStyleBackColor = true;
+            buttonDeleteOrder.UseVisualStyleBackColor = false;
             buttonDeleteOrder.Click += buttonDeleteOrder_Click;
             // 
             // buttonUpdateOrder
             // 
-            buttonUpdateOrder.Location = new Point(550, 665);
+            buttonUpdateOrder.BackColor = SystemColors.Highlight;
+            buttonUpdateOrder.Location = new Point(264, 426);
             buttonUpdateOrder.Name = "buttonUpdateOrder";
-            buttonUpdateOrder.Size = new Size(175, 46);
+            buttonUpdateOrder.Size = new Size(118, 44);
             buttonUpdateOrder.TabIndex = 8;
             buttonUpdateOrder.Text = "Изменить";
-            buttonUpdateOrder.UseVisualStyleBackColor = true;
+            buttonUpdateOrder.UseVisualStyleBackColor = false;
             buttonUpdateOrder.Click += buttonUpdateOrder_Click;
             // 
             // buttonAddOrder
             // 
-            buttonAddOrder.Location = new Point(92, 665);
+            buttonAddOrder.BackColor = Color.ForestGreen;
+            buttonAddOrder.Location = new Point(149, 426);
             buttonAddOrder.Name = "buttonAddOrder";
-            buttonAddOrder.Size = new Size(175, 46);
+            buttonAddOrder.Size = new Size(118, 44);
             buttonAddOrder.TabIndex = 7;
             buttonAddOrder.Text = "Добавить";
-            buttonAddOrder.UseVisualStyleBackColor = true;
+            buttonAddOrder.UseVisualStyleBackColor = false;
             buttonAddOrder.Click += buttonAddOrder_Click;
             // 
             // buttonAddGetOrder
             // 
-            buttonAddGetOrder.Location = new Point(550, 146);
+            buttonAddGetOrder.BackColor = SystemColors.ActiveBorder;
+            buttonAddGetOrder.Location = new Point(34, 426);
             buttonAddGetOrder.Name = "buttonAddGetOrder";
-            buttonAddGetOrder.Size = new Size(175, 60);
+            buttonAddGetOrder.Size = new Size(118, 44);
             buttonAddGetOrder.TabIndex = 6;
             buttonAddGetOrder.Text = "Обновить";
-            buttonAddGetOrder.UseVisualStyleBackColor = true;
+            buttonAddGetOrder.UseVisualStyleBackColor = false;
             buttonAddGetOrder.Click += buttonAddGetOrder_Click;
             // 
             // dataGridViewOrders
             // 
+            dataGridViewOrders.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewOrders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewOrders.Location = new Point(92, 212);
+            dataGridViewOrders.Location = new Point(21, 78);
             dataGridViewOrders.Name = "dataGridViewOrders";
             dataGridViewOrders.RowHeadersWidth = 51;
-            dataGridViewOrders.Size = new Size(1156, 448);
+            dataGridViewOrders.Size = new Size(1259, 342);
             dataGridViewOrders.TabIndex = 5;
-            dataGridViewOrders.CellContentClick += dataGridViewOrders_CellContentClick;
+            dataGridViewOrders.SelectionChanged += dataGridViewOrders_SelectionChanged;
+            // 
+            // label1
+            // 
+            label1.Font = new Font("Segoe UI", 18F);
+            label1.Location = new Point(560, 22);
+            label1.Name = "label1";
+            label1.Size = new Size(119, 40);
+            label1.TabIndex = 11;
+            label1.Text = "Заказы";
             // 
             // OrderControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label1);
             Controls.Add(buttonDeleteOrder);
             Controls.Add(buttonUpdateOrder);
             Controls.Add(buttonAddOrder);
             Controls.Add(buttonAddGetOrder);
             Controls.Add(dataGridViewOrders);
             Name = "OrderControl";
-            Size = new Size(1475, 780);
+            Size = new Size(1297, 677);
             Load += OrderControl_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewOrders).EndInit();
             ResumeLayout(false);
@@ -109,5 +125,6 @@
         private Button buttonAddOrder;
         private Button buttonAddGetOrder;
         private DataGridView dataGridViewOrders;
+        private Label label1;
     }
 }

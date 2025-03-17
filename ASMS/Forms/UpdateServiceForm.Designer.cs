@@ -46,7 +46,7 @@
             // 
             label5.AutoSize = true;
             label5.Cursor = Cursors.No;
-            label5.Location = new Point(50, 279);
+            label5.Location = new Point(75, 277);
             label5.Name = "label5";
             label5.Size = new Size(138, 20);
             label5.TabIndex = 50;
@@ -54,15 +54,16 @@
             // 
             // DurationBox
             // 
-            DurationBox.Location = new Point(194, 272);
+            DurationBox.Location = new Point(219, 277);
             DurationBox.Name = "DurationBox";
             DurationBox.Size = new Size(134, 27);
             DurationBox.TabIndex = 49;
+            DurationBox.TextChanged += DurationBox_TextChanged_1;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(134, 229);
+            label1.Location = new Point(159, 234);
             label1.Name = "label1";
             label1.Size = new Size(54, 20);
             label1.TabIndex = 48;
@@ -70,14 +71,14 @@
             // 
             // BrandBox
             // 
-            BrandBox.Location = new Point(194, 229);
+            BrandBox.Location = new Point(219, 234);
             BrandBox.Name = "BrandBox";
             BrandBox.Size = new Size(134, 27);
             BrandBox.TabIndex = 47;
             // 
             // DescriptionBox
             // 
-            DescriptionBox.Location = new Point(194, 114);
+            DescriptionBox.Location = new Point(219, 119);
             DescriptionBox.Multiline = true;
             DescriptionBox.Name = "DescriptionBox";
             DescriptionBox.Size = new Size(182, 53);
@@ -85,7 +86,7 @@
             // 
             // CancelButton
             // 
-            CancelButton.Location = new Point(282, 340);
+            CancelButton.Location = new Point(259, 333);
             CancelButton.Name = "CancelButton";
             CancelButton.Size = new Size(94, 29);
             CancelButton.TabIndex = 45;
@@ -94,7 +95,7 @@
             // 
             // UpdateServiceButton
             // 
-            UpdateServiceButton.Location = new Point(94, 340);
+            UpdateServiceButton.Location = new Point(118, 333);
             UpdateServiceButton.Name = "UpdateServiceButton";
             UpdateServiceButton.Size = new Size(94, 29);
             UpdateServiceButton.TabIndex = 44;
@@ -105,7 +106,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(143, 183);
+            label4.Location = new Point(168, 188);
             label4.Name = "label4";
             label4.Size = new Size(45, 20);
             label4.TabIndex = 43;
@@ -114,7 +115,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(109, 130);
+            label3.Location = new Point(134, 135);
             label3.Name = "label3";
             label3.Size = new Size(79, 20);
             label3.TabIndex = 42;
@@ -122,7 +123,7 @@
             // 
             // ServiceName
             // 
-            ServiceName.Location = new Point(80, 55);
+            ServiceName.Location = new Point(105, 60);
             ServiceName.MaximumSize = new Size(200, 100);
             ServiceName.Name = "ServiceName";
             ServiceName.RightToLeft = RightToLeft.Yes;
@@ -132,14 +133,14 @@
             // 
             // PriceBox
             // 
-            PriceBox.Location = new Point(194, 183);
+            PriceBox.Location = new Point(219, 188);
             PriceBox.Name = "PriceBox";
             PriceBox.Size = new Size(134, 27);
             PriceBox.TabIndex = 40;
             // 
             // NameBox
             // 
-            NameBox.Location = new Point(194, 55);
+            NameBox.Location = new Point(219, 60);
             NameBox.Multiline = true;
             NameBox.Name = "NameBox";
             NameBox.Size = new Size(182, 46);
@@ -149,7 +150,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(484, 408);
+            ClientSize = new Size(511, 450);
             Controls.Add(label5);
             Controls.Add(DurationBox);
             Controls.Add(label1);
@@ -163,6 +164,7 @@
             Controls.Add(PriceBox);
             Controls.Add(NameBox);
             Name = "UpdateServiceForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Изменение услуги или товара";
             Load += UpdateServiceForm_Load;
             ResumeLayout(false);

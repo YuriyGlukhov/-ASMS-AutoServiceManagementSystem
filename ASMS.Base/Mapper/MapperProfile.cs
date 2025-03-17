@@ -24,8 +24,8 @@ namespace ASMS.Base.Mapper
                 .ForMember(dest => dest.ClientName, opt => opt.MapFrom(src => src.Client.Name)) // Если у клиента есть свойство Name
                 .ForMember(dest => dest.CarInfo, opt => opt.MapFrom(src => $"{src.Car.Brand} {src.Car.Model} {src.Car.RegNumber}")) // Для машины
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status));
-                        ;
-
+            CreateMap<OrderServices, ServiceDTO>()
+           .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ServiceId));
             CreateMap<Service, ServiceDTO>(MemberList.Destination).ReverseMap();
         }
     }

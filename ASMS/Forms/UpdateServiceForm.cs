@@ -26,7 +26,7 @@ namespace ASMS.Forms.Forms
             DescriptionBox.Text = _serviceDTO.Description;
             PriceBox.Text = _serviceDTO.Price.ToString();
             BrandBox.Text = _serviceDTO.CarBrand;
-            DurationBox.Text = _serviceDTO.Duration.ToString();
+            DurationBox.Text = _serviceDTO.Duration.TotalMinutes.ToString();
         }
 
         private void UpdateServiceForm_Load(object sender, EventArgs e)
@@ -59,7 +59,7 @@ namespace ASMS.Forms.Forms
             _serviceDTO.Duration = TimeSpan.Parse(DurationBox.Text);
         }
 
-     
+
 
         private void UpdateServiceButton_Click_1(object sender, EventArgs e)
         {
@@ -72,6 +72,11 @@ namespace ASMS.Forms.Forms
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void DurationBox_TextChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

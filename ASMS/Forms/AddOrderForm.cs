@@ -2,6 +2,7 @@
 using ASMS.Base.Enums;
 using ASMS.Base.Models;
 using ASMS.Forms.Abstraction;
+using ASMS.Forms.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,19 +21,25 @@ namespace ASMS.Forms.Forms
         private readonly IEntityService<ClientDTO> _clientService;
         private readonly IEntityService<CarDTO> _carService;
         private readonly IEntityService<ServiceDTO> _serviceService;
+        private readonly IClientsCarService _clientsCarService;
 
-        private List<ServiceDTO> _services = new List<ServiceDTO>();
+        private List<ServiceDTO> services = new List<ServiceDTO>();
+        private string selectedCarBrand = string.Empty;
+        private int selectedClientId = 0;
+
         public AddOrderForm(
                         IEntityService<ClientDTO> clientService,
                         IEntityService<CarDTO> carService,
                         IEntityService<OrderDTO> orderService,
-                        IEntityService<ServiceDTO> serviceService)
+                        IEntityService<ServiceDTO> serviceService,
+                        IClientsCarService clientsCarService)
         {
 
             _clientService = clientService;
             _carService = carService;
             _orderService = orderService;
             _serviceService = serviceService;
+            _clientsCarService = clientsCarService;
             InitializeComponent();
         }
 
@@ -52,15 +59,34 @@ namespace ASMS.Forms.Forms
         private void comboBoxCars_DropDown(object sender, EventArgs e)
         {
 
-            var cars = _carService.Get();
+            var cars = _clientsCarService.GetClientCars(selectedClientId);
+            if (cars.Count < 1)
+            {
+                cars = _carService.Get();
+            }
             comboBoxCars.DataSource = cars;
             comboBoxCars.DisplayMember = "DisplayText";
             comboBoxCars.ValueMember = "Id";
+
         }
 
-        private void comboBoxCars_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxClients_SelectionChangeCommitted(object sender, EventArgs e)
         {
-       
+            if (comboBoxClients.SelectedItem is ClientDTO selectedClient)
+            {
+                selectedClientId = selectedClient.Id;
+                comboBoxCars.ResetText();
+
+            }
+        }
+        private void comboBoxCars_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (comboBoxCars.SelectedItem is CarDTO selectedCar)
+            {
+                selectedCarBrand = selectedCar.Brand;
+                comboBoxServices.ResetText();
+
+            }
         }
 
         private void AddOrderButton_Click(object sender, EventArgs e)
@@ -80,7 +106,7 @@ namespace ASMS.Forms.Forms
                 MessageBox.Show("Выберите услугу");
                 return;
             }
-            _services.Add(selectedService);
+            services.Add(selectedService);
 
             var order = new OrderDTO
             {
@@ -91,7 +117,7 @@ namespace ASMS.Forms.Forms
                 Status = OrderStatus.Created,
                 ClientName = null,
                 CarInfo = null,
-                Services = _services
+                Services = services
 
             };
 
@@ -105,33 +131,59 @@ namespace ASMS.Forms.Forms
                 MessageBox.Show($"Ошибка: {ex.Message}");
             }
         }
-
-        private void comboBoxClients_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DescriptionBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void comboBoxServices_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void comboBoxServices_DropDown(object sender, EventArgs e)
         {
             var services = _serviceService.Get();
-            comboBoxServices.DataSource = services;
-            comboBoxServices.DisplayMember = "Name";
-            comboBoxServices.ValueMember = "Id";
+
+            if (comboBoxCars.Text == string.Empty)
+            {
+                comboBoxServices.DataSource = services;
+                comboBoxServices.DisplayMember = "Name";
+                comboBoxServices.ValueMember = "Id";
+            }
+            else
+            {
+                var tempServiceList = new List<ServiceDTO>();
+                foreach (var service in services)
+                {
+                    if (service.CarBrand == selectedCarBrand || service.CarBrand == "All")
+                    {
+                        tempServiceList.Add(service);
+                    }
+                }
+                comboBoxServices.DataSource = tempServiceList;
+                comboBoxServices.DisplayMember = "Name";
+                comboBoxServices.ValueMember = "Id";
+            }
+        }
+
+        private void AddClientButton_Click(object sender, EventArgs e)
+        {
+            var addClientFrom = new AddClientForm(_clientService);
+            addClientFrom.ShowDialog();
+            this.Refresh();
+
+        }
+
+        private void AddCarButton_Click(object sender, EventArgs e)
+        {
+            var addCarForm = new AddCarForm(_carService);
+            addCarForm.ShowDialog();
+            this.Refresh();
+
+        }
+
+        private void AddServiceButton_Click(object sender, EventArgs e)
+        {
+            var addServiceForm = new AddServiceForm(_serviceService);
+            addServiceForm.ShowDialog();
+            this.Refresh();
         }
     }
 }

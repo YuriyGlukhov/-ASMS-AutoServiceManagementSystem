@@ -17,15 +17,19 @@ namespace ASMS.Forms.Controls
     public partial class CarControl : UserControl
     {
         private readonly IEntityService<CarDTO> _carService;
+        private readonly IEntityService<ClientDTO> _clientService;
+        private readonly IClientsCarService _clientsCarService;
         private CarDTO _carDTO;
-        public CarControl(IEntityService<CarDTO> carService)
+        public CarControl(IEntityService<CarDTO> carService, IClientsCarService clientsCarService, IEntityService<ClientDTO> clientService)
         {
             _carService = carService;
+            _clientsCarService = clientsCarService;
+            _clientService = clientService;
             InitializeComponent();
         }
         private void CarControl_Load(object sender, EventArgs e)
         {
-            LoadCars(); 
+            LoadCars();
         }
 
         private void LoadCars()
@@ -33,11 +37,11 @@ namespace ASMS.Forms.Controls
             var cars = _carService.Get();
             dataGridViewCars.DataSource = cars;
         }
-        private void dataGridViewCars_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewCars_SelectionChanged(object sender, EventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (dataGridViewCars.CurrentRow == null) return;
             {
-                var selectedRow = dataGridViewCars.Rows[e.RowIndex];
+                var selectedRow = dataGridViewCars.CurrentRow;
 
                 try
                 {
@@ -54,7 +58,7 @@ namespace ASMS.Forms.Controls
 
                     selectedRow.Selected = true;
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -100,6 +104,5 @@ namespace ASMS.Forms.Controls
             }
         }
 
-        
     }
 }

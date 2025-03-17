@@ -1,4 +1,5 @@
-﻿using ASMS.Base.Enums;
+﻿using ASMS.Base.Entities;
+using ASMS.Base.Enums;
 using ASMS.Base.Models;
 using ASMS.Forms.Abstraction;
 using ASMS.Forms.Forms;
@@ -21,18 +22,22 @@ namespace ASMS.Forms.Controls
         private readonly IEntityService<ClientDTO> _clientService;
         private readonly IEntityService<CarDTO> _carService;
         private readonly IEntityService<ServiceDTO> _serviceService;
+        private readonly IClientsCarService _clientsCarService;
 
-        private OrderDTO _orderDTO;
+        private OrderDTO orderDTO;
+        private List<ServiceDTO> servicesList = new List<ServiceDTO>();
         public OrderControl(
                     IEntityService<ClientDTO> clientService,
                     IEntityService<CarDTO> carService,
                     IEntityService<OrderDTO> orderService,
-                    IEntityService<ServiceDTO> serviceService)
+                    IEntityService<ServiceDTO> serviceService,
+                    IClientsCarService clientsCarService)
         {
             _clientService = clientService;
             _carService = carService;
             _orderService = orderService;
             _serviceService = serviceService;
+            _clientsCarService = clientsCarService;
             InitializeComponent();
         }
 
@@ -43,29 +48,49 @@ namespace ASMS.Forms.Controls
         private void LoadOrders()
         {
             var orders = _orderService.Get();
-            
+
+            foreach (var order in orders)
+            {
+                order.ServicesInfo = string.Join(", ", order.Services.Select(s => s.Name));
+            }
+
+            // Отображаем данные в DataGridView
             dataGridViewOrders.DataSource = orders;
+
+            // Настроим столбцы
+            dataGridViewOrders.Columns["ServicesInfo"].HeaderText = "Услуга";
             dataGridViewOrders.Columns["ClientName"].HeaderText = "Клиент";
             dataGridViewOrders.Columns["CarInfo"].HeaderText = "Машина";
 
         }
 
-        private void dataGridViewOrders_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewOrders_SelectionChanged(object sender, EventArgs e)
         {
-            if(e.RowIndex >= 0)
-    {
-                var selectedRow = dataGridViewOrders.Rows[e.RowIndex];
+            if (dataGridViewOrders.CurrentRow == null) return;
+            {
+                var selectedRow = dataGridViewOrders.CurrentRow;
 
                 try
                 {
-                    _orderDTO = new OrderDTO
+                    var tempList = _serviceService.Get();
+                    foreach(var service in tempList)
+                    {
+                        if (service.Name == selectedRow.Cells["ServicesInfo"].Value?.ToString())
+                        {
+                            servicesList.Clear();
+                            servicesList.Add(service);
+                        }
+                    }
+
+                    orderDTO = new OrderDTO
                     {
                         Id = Convert.ToInt32(selectedRow.Cells["Id"].Value),
                         Description = selectedRow.Cells["Description"].Value?.ToString() ?? string.Empty,
                         OrderDate = Convert.ToDateTime(selectedRow.Cells["OrderDate"].Value).ToUniversalTime(),
                         Status = ParseOrderStatus(selectedRow.Cells["Status"].Value),
                         ClientId = Convert.ToInt32(selectedRow.Cells["ClientId"].Value),
-                        CarId = Convert.ToInt32(selectedRow.Cells["CarId"].Value)
+                        CarId = Convert.ToInt32(selectedRow.Cells["CarId"].Value),
+                        Services = servicesList
                     };
 
                     selectedRow.Selected = true;
@@ -84,16 +109,16 @@ namespace ASMS.Forms.Controls
 
         private void buttonAddOrder_Click(object sender, EventArgs e)
         {
-            var addOrderForm = new AddOrderForm(_clientService,_carService,_orderService,_serviceService);
+            var addOrderForm = new AddOrderForm(_clientService,_carService,_orderService,_serviceService, _clientsCarService);
             addOrderForm.ShowDialog();
             LoadOrders();
         }
 
         private void buttonUpdateOrder_Click(object sender, EventArgs e)
         {
-            if (_orderDTO != null)
+            if (orderDTO != null)
             {
-                var updateOrderForm = new UpdateOrderForm(_orderDTO,_clientService,_carService,_orderService,_serviceService);
+                var updateOrderForm = new UpdateOrderForm(orderDTO,_clientService,_carService,_orderService,_serviceService,_clientsCarService);
                 updateOrderForm.ShowDialog();
                 LoadOrders();
             }
@@ -105,10 +130,10 @@ namespace ASMS.Forms.Controls
 
         private void buttonDeleteOrder_Click(object sender, EventArgs e)
         {
-            if (_orderDTO != null)
+            if (orderDTO != null)
             {
 
-                _orderService.Remove(_orderDTO);
+                _orderService.Remove(orderDTO);
                 LoadOrders();
             }
             else

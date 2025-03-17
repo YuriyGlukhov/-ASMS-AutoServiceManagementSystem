@@ -7,6 +7,7 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,81 +69,115 @@ namespace ASMS.Forms.Services
 
         public List<OrderDTO> Get()
         {
+
             var orders = _context.Orders.ToList();
 
-            orders.Select(order => new OrderDTO
+            var orderDTOs = orders.Select(order =>
             {
-                Id = order.Id,
-                Description = order.Description,
-                OrderDate = order.OrderDate,
-                Status = order.Status,
-                ClientName = GetClientName(order.ClientId),
-                CarInfo = GetCarInfo(order.CarId),
-                ClientId = order.ClientId,
-                CarId = order.CarId
-            }).ToList();
+                var orderDto = _mapper.Map<OrderDTO>(order);
 
+                orderDto.Services = AddServiceToOrder(order.Id);
 
-            var orderDTOs = _mapper.Map<List<OrderDTO>>(orders);
+                return orderDto;
+            }).ToList();  
 
             return orderDTOs;
 
         }
 
-            public void Remove(OrderDTO entity)
+        public void Remove(OrderDTO entity)
+        {
+            var order = _context.Orders.FirstOrDefault(x => x.Id == entity.Id);
+            if (order == null)
             {
-                var order = _context.Orders.FirstOrDefault(x => x.Id == entity.Id);
-                if (order == null)
+                MessageBox.Show("Заказ не найден");
+                return;
+            }
+
+            if (order.Status is OrderStatus.Completed or OrderStatus.InProgress)
+            {
+                MessageBox.Show("Ошибка! Невозможно удалить заказ. Возможно, он выполнен или находится в работе.");
+                return;
+            }
+
+            _context.Orders.Remove(order);
+            _context.SaveChanges();
+            MessageBox.Show("Заказ успешно удалён");
+
+        }
+
+        public void UpDate(OrderDTO entity)
+        {
+            var order = _context.Orders.FirstOrDefault(x => x.Id == entity.Id);
+            if (order == null)
+            {
+                MessageBox.Show("Заказ не найден");
+                return;
+            }
+
+            order.Description = entity.Description;
+            order.Status = entity.Status;
+            order.CarId = entity.CarId;
+            order.ClientId = entity.ClientId;
+
+            var servicesList = new List<Service>();
+            if (entity.Services != null)
+            {
+                
+                foreach (var service in entity.Services)
                 {
-                    MessageBox.Show("Заказ не найден");
-                    return;
+                    var tempService = _mapper.Map<Service>(service);
+                    servicesList.Add(tempService);
                 }
+            }
 
-                if (order.Status is OrderStatus.Completed or OrderStatus.InProgress)
+            if (order.Services == servicesList) return;
+            else
+            {
+                var existingOrderServices = _context.OrderServices.Where(x => x.OrderId == order.Id).ToList();
+                _context.OrderServices.RemoveRange(existingOrderServices);
+
+                foreach (var service in servicesList)
                 {
-                    MessageBox.Show("Ошибка! Невозможно удалить заказ. Возможно, он выполнен или находится в работе.");
-                    return;
+                    var orderService = new OrderServices
+                    {
+                        OrderId = order.Id,
+                        ServiceId = service.Id 
+                    };
+                    _context.OrderServices.Add(orderService);
                 }
-
-                _context.Orders.Remove(order);
-                _context.SaveChanges();
-                MessageBox.Show("Заказ успешно удалён");
-
             }
 
-            public void UpDate(OrderDTO entity)
+            _context.SaveChanges();
+            MessageBox.Show("Данные успешно обновлены");
+        }
+
+        private List<ServiceDTO> AddServiceToOrder(int orderId)
+        {
+            var orderServices = _context.OrderServices.Where(x => x.OrderId == orderId).ToList();
+            var servicesList = new List<ServiceDTO>();
+
+            foreach (var orderService in orderServices)
             {
-                var order = _context.Orders.FirstOrDefault(x => x.Id == entity.Id);
-                if (order == null)
+                var service = _context.Services.FirstOrDefault(s => s.Id == orderService.ServiceId); 
                 {
-                    MessageBox.Show("Заказ не найден");
-                    return;
+                    var serviceDto = _mapper.Map<ServiceDTO>(service); 
+                    servicesList.Add(serviceDto);
                 }
-
-                order.Description = entity.Description;
-                order.Status = entity.Status;
-                order.CarId = entity.CarId;
-                order.ClientId = entity.ClientId;
-                order.Services = entity.Services?.Select(s => _mapper.Map<Service>(s)).ToList() ?? new List<Service>();
-
-                _context.SaveChanges();
-                MessageBox.Show("Данные успешно обновлены");
             }
 
-            private void AddServiceToOrder(int orderId)
-            {
-
-            }
-            public string GetClientName(int clientId)
-            {
-                var client = _context.Clients.FirstOrDefault(c => c.Id == clientId);
-                return client?.Name ?? "Не указан";
-            }
-            public string GetCarInfo(int carId)
-            {
-                var car = _context.Cars.FirstOrDefault(c => c.Id == carId);
-                return car != null ? $"{car.Brand} {car.Model} {car.RegNumber}" : "Не указана";
-            }
+            return servicesList;
+        }
+        public string GetClientName(int clientId)
+        {
+            var client = _context.Clients.FirstOrDefault(c => c.Id == clientId);
+            return client?.Name ?? "Не указан";
+        }
+        public string GetCarInfo(int carId)
+        {
+            var car = _context.Cars.FirstOrDefault(c => c.Id == carId);
+            return car != null ? $"{car.Brand} {car.Model} {car.RegNumber}" : "Не указана";
+        }
         
     }
 }
