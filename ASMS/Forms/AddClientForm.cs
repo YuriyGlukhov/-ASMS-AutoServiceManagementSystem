@@ -21,26 +21,6 @@ namespace ASMS.Forms.Forms
             InitializeComponent();
             _clientService = clientService;
         }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddClientButton_Click(object sender, EventArgs e)
         {
             string name = textBox2.Text;
@@ -49,7 +29,8 @@ namespace ASMS.Forms.Forms
             try
             {
                 DateTime birthDate;
-                if (DateTime.TryParseExact(birthDateText, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out birthDate))
+                if (DateTime.TryParseExact(birthDateText, "dd.MM.yyyy", 
+                    CultureInfo.InvariantCulture, DateTimeStyles.None, out birthDate))
                 {
 
                     var client = new ClientDTO
@@ -70,6 +51,24 @@ namespace ASMS.Forms.Forms
             {
                 MessageBox.Show(ex.Message);
             }
+
+        }
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
 
         }
 

@@ -16,13 +16,14 @@ namespace ASMS.Base.Mapper
             CreateMap<Client, ClientDTO>(MemberList.Destination).ReverseMap();
             CreateMap<Car, CarDTO>(MemberList.Destination).ReverseMap();
             CreateMap<OrderDTO, Order>(MemberList.Destination)
-             .ForMember(dest => dest.ClientId, opt => opt.MapFrom(src => src.ClientId)) // Если есть ClientId в обеих сущностях
-            .ForMember(dest => dest.CarId, opt => opt.MapFrom(src => src.CarId)) // Если есть CarId в обеих сущностях
-            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status)); // Статус передаем как есть
+             .ForMember(dest => dest.ClientId, opt => opt.MapFrom(src => src.ClientId)) 
+            .ForMember(dest => dest.CarId, opt => opt.MapFrom(src => src.CarId)) 
+            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status)); 
             ;
             CreateMap<Order, OrderDTO>()
-                .ForMember(dest => dest.ClientName, opt => opt.MapFrom(src => src.Client.Name)) // Если у клиента есть свойство Name
-                .ForMember(dest => dest.CarInfo, opt => opt.MapFrom(src => $"{src.Car.Brand} {src.Car.Model} {src.Car.RegNumber}")) // Для машины
+                .ForMember(dest => dest.ClientName, opt => opt.MapFrom(src => src.Client.Name)) 
+                .ForMember(dest => dest.CarInfo, opt => opt.MapFrom(src => $"{src.Car.Brand} " +
+                                                                 $"{src.Car.Model} {src.Car.RegNumber}")) 
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status));
             CreateMap<OrderServices, ServiceDTO>()
            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ServiceId));

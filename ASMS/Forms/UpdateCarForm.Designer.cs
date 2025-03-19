@@ -167,6 +167,7 @@
             Name = "UpdateCarForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "UpdateCarForm";
+            Load += UpdateCarForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

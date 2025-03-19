@@ -24,7 +24,6 @@ namespace ASMS.Forms.Forms
 
         private OrderDTO _orderDTO;
         private string selectedCarBrand = string.Empty;
-        private int selectedCarId = 0;
         private int selectedClientId = 0;
         public UpdateOrderForm(OrderDTO orderDTO,
                                 IEntityService<ClientDTO> clientService,
@@ -63,9 +62,7 @@ namespace ASMS.Forms.Forms
                 comboBoxServices.Text = tempService.Name;
             }
             selectedClientId = _orderDTO.ClientId;
-            selectedCarId = _orderDTO.CarId;
             selectedCarBrand = GetCarBrand(_orderDTO.CarId);
-
         }
 
         private void LoadComboBoxData()

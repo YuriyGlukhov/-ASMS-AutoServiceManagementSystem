@@ -57,19 +57,16 @@ namespace ASMS.Forms.Services
                 _context.OrderServices.AddRange(orderServices);
                 _context.SaveChanges();
 
-
                 MessageBox.Show("Заказ успешно добавлен");
             }
             else
             {
                 MessageBox.Show("Такой заказ уже существует");
             }
-
         }
 
         public List<OrderDTO> Get()
         {
-
             var orders = _context.Orders.ToList();
 
             var orderDTOs = orders.Select(order =>
@@ -82,7 +79,6 @@ namespace ASMS.Forms.Services
             }).ToList();  
 
             return orderDTOs;
-
         }
 
         public void Remove(OrderDTO entity)
@@ -93,17 +89,14 @@ namespace ASMS.Forms.Services
                 MessageBox.Show("Заказ не найден");
                 return;
             }
-
             if (order.Status is OrderStatus.Completed or OrderStatus.InProgress)
             {
                 MessageBox.Show("Ошибка! Невозможно удалить заказ. Возможно, он выполнен или находится в работе.");
                 return;
             }
-
             _context.Orders.Remove(order);
             _context.SaveChanges();
             MessageBox.Show("Заказ успешно удалён");
-
         }
 
         public void UpDate(OrderDTO entity)
@@ -165,7 +158,6 @@ namespace ASMS.Forms.Services
                     servicesList.Add(serviceDto);
                 }
             }
-
             return servicesList;
         }
         public string GetClientName(int clientId)
@@ -176,7 +168,7 @@ namespace ASMS.Forms.Services
         public string GetCarInfo(int carId)
         {
             var car = _context.Cars.FirstOrDefault(c => c.Id == carId);
-            return car != null ? $"{car.Brand} {car.Model} {car.RegNumber}" : "Не указана";
+            return car != null ? $"{car.Brand} {car.Model} {car.RegNumber}" : "Не указано";
         }
         
     }

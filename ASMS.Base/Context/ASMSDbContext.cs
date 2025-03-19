@@ -92,8 +92,6 @@ namespace ASMS.Base.Context
             modelBuilder.Entity<Order>()
                 .Property(o => o.Status)
                 .HasConversion<string>();
-        }
-
-    
+        } 
     }
 }

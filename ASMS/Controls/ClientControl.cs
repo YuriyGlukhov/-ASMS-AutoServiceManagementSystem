@@ -90,10 +90,20 @@ namespace ASMS.Forms.Controlls
 
         private void buttonDeleteClient_Click(object sender, EventArgs e)
         {
+           
             if (_clientDTO != null)
             {
-                _clientService.Remove(_clientDTO);
-                LoadClients();
+                try
+                {
+                    _clientService.Remove(_clientDTO);
+                    LoadClients();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Невозможно удалить клиента, так как на нем есть связанные заказы.\n" +
+                                    $"{ex.Message}", "Ошибка", 
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {

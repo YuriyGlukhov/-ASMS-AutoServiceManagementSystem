@@ -165,6 +165,7 @@
             Name = "AddCarForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "AddCarForm";
+            Load += AddCarForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

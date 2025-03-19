@@ -11,20 +11,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace ASMS.Forms.Controls
 {
     public partial class CarControl : UserControl
     {
         private readonly IEntityService<CarDTO> _carService;
-        private readonly IEntityService<ClientDTO> _clientService;
-        private readonly IClientsCarService _clientsCarService;
-        private CarDTO _carDTO;
-        public CarControl(IEntityService<CarDTO> carService, IClientsCarService clientsCarService, IEntityService<ClientDTO> clientService)
+        private CarDTO carDTO = new CarDTO();
+        public CarControl(IEntityService<CarDTO> carService, IClientsCarService clientsCarService,
+                          IEntityService<ClientDTO> clientService)
         {
             _carService = carService;
-            _clientsCarService = clientsCarService;
-            _clientService = clientService;
             InitializeComponent();
         }
         private void CarControl_Load(object sender, EventArgs e)
@@ -42,19 +40,14 @@ namespace ASMS.Forms.Controls
             if (dataGridViewCars.CurrentRow == null) return;
             {
                 var selectedRow = dataGridViewCars.CurrentRow;
-
                 try
                 {
-                    _carDTO = new CarDTO
-                    {
-                        Id = Convert.ToInt32(selectedRow.Cells["Id"].Value),
-                        RegNumber = selectedRow.Cells["RegNumber"].Value.ToString(),
-                        Brand = selectedRow.Cells["Brand"].Value.ToString(),
-                        Model = selectedRow.Cells["Model"].Value.ToString(),
-                        Vin = selectedRow.Cells["Vin"].Value.ToString(),
-                        Year = Convert.ToInt32(selectedRow.Cells["Year"].Value.ToString())
-
-                    };
+                    carDTO.Id = Convert.ToInt32(selectedRow.Cells["Id"].Value);
+                    carDTO.RegNumber = selectedRow.Cells["RegNumber"].Value.ToString();
+                    carDTO.Brand = selectedRow.Cells["Brand"].Value.ToString();
+                    carDTO.Model = selectedRow.Cells["Model"].Value.ToString();
+                    carDTO.Vin = selectedRow.Cells["Vin"].Value.ToString();
+                    carDTO.Year = Convert.ToInt32(selectedRow.Cells["Year"].Value.ToString());
 
                     selectedRow.Selected = true;
                 }
@@ -79,9 +72,9 @@ namespace ASMS.Forms.Controls
 
         private void buttonUpdateCar_Click(object sender, EventArgs e)
         {
-            if (_carDTO != null)
+            if (carDTO != null)
             {
-                var updateCarFomr = new UpdateCarForm(_carService, _carDTO);
+                var updateCarFomr = new UpdateCarForm(_carService, carDTO);
                 updateCarFomr.ShowDialog();
                 LoadCars();
             }
@@ -93,10 +86,19 @@ namespace ASMS.Forms.Controls
 
         private void buttonDeleteCar_Click(object sender, EventArgs e)
         {
-            if (_carDTO != null)
+            if (carDTO != null)
             {
-                _carService.Remove(_carDTO);
-                LoadCars();
+                try
+                {
+                    _carService.Remove(carDTO);
+                    LoadCars();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Невозможно удалить авто, так как на нем есть связанные заказы.\n" +
+                                    $"{ex.Message}", "Ошибка",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {

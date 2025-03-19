@@ -46,7 +46,15 @@ namespace ASMS.Forms.Forms
 
         private void PriceBox_TextChanged(object sender, EventArgs e)
         {
-            _serviceDTO.Price = Convert.ToDecimal(PriceBox.Text);
+            if (decimal.TryParse(PriceBox.Text, out decimal price))
+            {
+                _serviceDTO.Price = price;
+            }
+            else
+            {
+                MessageBox.Show("Введите корректное число!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+           
         }
 
         private void BrandBox_TextChanged(object sender, EventArgs e)

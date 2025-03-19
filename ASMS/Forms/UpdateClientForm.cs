@@ -56,7 +56,8 @@ namespace ASMS.Forms.Forms
             if (cleanDateText.Length == 8) 
             {
                 DateTime birthDate;
-                if (DateTime.TryParseExact(cleanDateText, "ddMMyyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out birthDate))
+                if (DateTime.TryParseExact(cleanDateText, "ddMMyyyy", CultureInfo.InvariantCulture, 
+                                           DateTimeStyles.None, out birthDate))
                 {
                     _client.BirthDay = birthDate.ToUniversalTime(); 
                 }

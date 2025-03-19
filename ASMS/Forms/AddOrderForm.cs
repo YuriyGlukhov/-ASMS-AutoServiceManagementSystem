@@ -47,13 +47,21 @@ namespace ASMS.Forms.Forms
         {
 
         }
-
         private void comboBoxClients_DropDown(object sender, EventArgs e)
         {
             var clients = _clientService.Get();
             comboBoxClients.DataSource = clients;
             comboBoxClients.DisplayMember = "Name";
             comboBoxClients.ValueMember = "Id";
+        }
+        private void comboBoxClients_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (comboBoxClients.SelectedItem is ClientDTO selectedClient)
+            {
+                selectedClientId = selectedClient.Id;
+                comboBoxCars.ResetText();
+
+            }
         }
 
         private void comboBoxCars_DropDown(object sender, EventArgs e)
@@ -67,18 +75,8 @@ namespace ASMS.Forms.Forms
             comboBoxCars.DataSource = cars;
             comboBoxCars.DisplayMember = "DisplayText";
             comboBoxCars.ValueMember = "Id";
-
         }
 
-        private void comboBoxClients_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            if (comboBoxClients.SelectedItem is ClientDTO selectedClient)
-            {
-                selectedClientId = selectedClient.Id;
-                comboBoxCars.ResetText();
-
-            }
-        }
         private void comboBoxCars_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (comboBoxCars.SelectedItem is CarDTO selectedCar)
@@ -107,7 +105,6 @@ namespace ASMS.Forms.Forms
                 return;
             }
             services.Add(selectedService);
-
             var order = new OrderDTO
             {
                 Description = DescriptionBox.Text,
@@ -120,7 +117,6 @@ namespace ASMS.Forms.Forms
                 Services = services
 
             };
-
             try
             {
                 _orderService.Add(order);

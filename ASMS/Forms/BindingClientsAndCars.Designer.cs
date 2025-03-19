@@ -39,7 +39,7 @@
             // comboBoxClients
             // 
             comboBoxClients.FormattingEnabled = true;
-            comboBoxClients.Location = new Point(268, 116);
+            comboBoxClients.Location = new Point(193, 106);
             comboBoxClients.Name = "comboBoxClients";
             comboBoxClients.Size = new Size(175, 28);
             comboBoxClients.TabIndex = 56;
@@ -49,7 +49,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(204, 119);
+            label7.Location = new Point(129, 109);
             label7.Name = "label7";
             label7.Size = new Size(58, 20);
             label7.TabIndex = 55;
@@ -58,7 +58,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(215, 177);
+            label6.Location = new Point(140, 167);
             label6.Name = "label6";
             label6.Size = new Size(42, 20);
             label6.TabIndex = 54;
@@ -67,7 +67,7 @@
             // comboBoxCars
             // 
             comboBoxCars.FormattingEnabled = true;
-            comboBoxCars.Location = new Point(268, 174);
+            comboBoxCars.Location = new Point(193, 164);
             comboBoxCars.Name = "comboBoxCars";
             comboBoxCars.Size = new Size(175, 28);
             comboBoxCars.TabIndex = 53;
@@ -76,7 +76,7 @@
             // 
             // CancelButton
             // 
-            CancelButton.Location = new Point(356, 273);
+            CancelButton.Location = new Point(281, 263);
             CancelButton.Name = "CancelButton";
             CancelButton.Size = new Size(94, 29);
             CancelButton.TabIndex = 58;
@@ -86,7 +86,7 @@
             // 
             // BindButton
             // 
-            BindButton.Location = new Point(215, 273);
+            BindButton.Location = new Point(140, 263);
             BindButton.Name = "BindButton";
             BindButton.Size = new Size(94, 29);
             BindButton.TabIndex = 57;
@@ -98,7 +98,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(709, 511);
+            ClientSize = new Size(511, 450);
             Controls.Add(CancelButton);
             Controls.Add(BindButton);
             Controls.Add(comboBoxClients);

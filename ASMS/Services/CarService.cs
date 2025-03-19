@@ -39,16 +39,13 @@ namespace ASMS.Forms.Services
             else
             {
                 MessageBox.Show("Такой автомобиль уже существует");
-            }             
-            
+            }               
         }
 
         public List<CarDTO> Get()
         {
-  
             var cars = _context.Cars.Select(x => _mapper.Map<CarDTO>(x)).ToList();
             return cars;
-
         }
 
         public void Remove(CarDTO entity)
@@ -63,26 +60,22 @@ namespace ASMS.Forms.Services
             else
             {
                 MessageBox.Show("Автомобиль не найден");
-            }         
-            
+            }                
         }
 
         public void UpDate(CarDTO entity)
         {
-
             var car = _context.Cars.FirstOrDefault(x => x.Id == entity.Id);
             if (car != null)
             {
                 _mapper.Map(entity, car);
                 _context.SaveChanges();
                 MessageBox.Show("Данные успешно обновлены");
-
             }
             else
             {
                 MessageBox.Show("Автомобиль не найден");
-            }
-            
+            }    
         }
     }
 }

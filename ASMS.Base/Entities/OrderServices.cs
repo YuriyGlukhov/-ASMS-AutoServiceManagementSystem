@@ -13,7 +13,6 @@ namespace ASMS.Base.Entities
 
         public int? ServiceId { get; set; }  
         public virtual Service? Service { get; set; }
-
-       
+        
     }
 }

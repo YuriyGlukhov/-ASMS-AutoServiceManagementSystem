@@ -38,7 +38,6 @@ namespace ASMS.Forms.Services
             {
                 MessageBox.Show("Такой клиент уже существует");
             }
-
         }
 
         public List<ClientDTO> Get()
@@ -69,25 +68,18 @@ namespace ASMS.Forms.Services
 
         public void UpDate(ClientDTO entity)
         {
-            try
+           var client = _context.Clients.FirstOrDefault(x => x.Id == entity.Id);
+            if (client != null)
             {
-                var client = _context.Clients.FirstOrDefault(x => x.Id == entity.Id);
-                if (client != null)
-                {
-                    _mapper.Map(entity, client);
+                _mapper.Map(entity, client);
 
-                    _context.SaveChanges();
+                _context.SaveChanges();
 
-                    MessageBox.Show("Данные успешно обновлены");
-                }
-                else
-                {
-                    MessageBox.Show("Клиент не найден");
-                }
+                MessageBox.Show("Данные успешно обновлены");
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Ошибка при обновлении данных: {ex.Message}");
+                MessageBox.Show("Клиент не найден");
             }
         }
     }

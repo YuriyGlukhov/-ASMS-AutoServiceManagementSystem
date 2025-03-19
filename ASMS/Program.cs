@@ -10,9 +10,6 @@ namespace ASMS.Forms
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
@@ -23,7 +20,7 @@ namespace ASMS.Forms
 
             var connectionString = configuration.GetConnectionString("db");
 
-            var serviceProvider = new ServiceCollection()
+            var serviceProvider = new ServiceCollection()?
                 .AddSingleton(connectionString)  
                 .AddScoped<IEntityService<ClientDTO>, ClientService>()
                 .AddScoped<IEntityService<CarDTO>, CarService>()

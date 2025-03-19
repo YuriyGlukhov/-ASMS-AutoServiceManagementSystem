@@ -20,37 +20,6 @@ namespace ASMS.Forms.Forms
             _serviceService = serviceService;
             InitializeComponent();
         }
-
-        private void AddServiceForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void NameBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DescriptionBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PriceBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BrandBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DurationBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddServiceButton_Click(object sender, EventArgs e)
         {
             try
@@ -79,6 +48,30 @@ namespace ASMS.Forms.Forms
             }
         }
 
+        private void AddServiceForm_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void NameBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void DescriptionBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void PriceBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void BrandBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void DurationBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();

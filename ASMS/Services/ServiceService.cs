@@ -44,7 +44,6 @@ namespace ASMS.Forms.Services
         {
             var services = _context.Services.Select(x => _mapper.Map<ServiceDTO>(x)).ToList();
             return services;
-
         }
 
         public void Remove(ServiceDTO entity)

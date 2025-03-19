@@ -17,40 +17,40 @@ namespace ASMS.Forms.Forms
     public partial class UpdateCarForm : Form
     {
         private readonly IEntityService<CarDTO> _carService;
-        private CarDTO _car;
+        private CarDTO _carDTO;
         public UpdateCarForm(IEntityService<CarDTO> carService, CarDTO carDTO)
         {
             _carService = carService;
-            _car = carDTO;
+            _carDTO = carDTO;
             InitializeComponent();
 
-            BrandBox.Text = _car.Brand;
-            ModelBox.Text = _car.Model;
-            RegNumberBox.Text = _car.RegNumber;
-            VinBox.Text = _car.Vin;
-            YearBox.Text = _car.Year.ToString();
+            BrandBox.Text = _carDTO.Brand;
+            ModelBox.Text = _carDTO.Model;
+            RegNumberBox.Text = _carDTO.RegNumber;
+            VinBox.Text = _carDTO.Vin;
+            YearBox.Text = _carDTO.Year.ToString();
         }
 
         private void BrandBox_TextChanged(object sender, EventArgs e)
         {
-            _car.Brand = BrandBox.Text;
+            _carDTO.Brand = BrandBox.Text;
         }
 
         private void ModelBox_TextChanged(object sender, EventArgs e)
         {
-            _car.Model = ModelBox.Text;
+            _carDTO.Model = ModelBox.Text;
         }
 
         private void RegNumberBox_TextChanged(object sender, EventArgs e)
         {
-            _car.RegNumber = RegNumberBox.Text;
+            _carDTO.RegNumber = RegNumberBox.Text;
         }
 
         private void UpdateCarButton_Click(object sender, EventArgs e)
         {
             try
             {
-                _carService.UpDate(_car);
+                _carService.UpDate(_carDTO);
 
                 this.Close();
             }
@@ -67,12 +67,25 @@ namespace ASMS.Forms.Forms
 
         private void VinBox_TextChanged(object sender, EventArgs e)
         {
-            _car.Vin = VinBox.Text;
+            _carDTO.Vin = VinBox.Text;
         }
 
         private void YearBox_TextChanged(object sender, EventArgs e)
         {
-            _car.Year = int.Parse(YearBox.Text);
+            if (int.TryParse(YearBox.Text, out int year))
+            {
+                _carDTO.Year = year;
+            }
+            else
+            {
+                MessageBox.Show("Введите корректное число!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                YearBox.Clear();
+            }
+        }
+
+        private void UpdateCarForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

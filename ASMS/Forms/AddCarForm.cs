@@ -20,41 +20,46 @@ namespace ASMS.Forms.Forms
             _carService = carService;
             InitializeComponent();
         }
-
         private void BrandBox_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void ModelBox_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void RegNumberBox_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void AddCarButton_Click(object sender, EventArgs e)
         {
-            var car = new CarDTO()
+            try
             {
-                Brand = BrandBox.Text,
-                Model = ModelBox.Text,
-                RegNumber = RegNumberBox.Text,
-                Vin = VinBox.Text,
-                Year = int.Parse(YearBox.Text)
-            };
-            _carService.Add(car);
-
-            this.Close();
+                var car = new CarDTO()
+                {
+                    Brand = BrandBox.Text,
+                    Model = ModelBox.Text,
+                    RegNumber = RegNumberBox.Text,
+                    Vin = VinBox.Text,
+                    Year = int.Parse(YearBox.Text)
+                };
+                _carService.Add(car);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Заполните все данные!");
+            }
         }
-
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        private void AddCarForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

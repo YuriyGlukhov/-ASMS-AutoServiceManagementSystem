@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ASMS.Base")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e14faee4b85fd048b7f2f44a2c598d74224f05f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+970d2d3293e628e8cf55ed64acdba9ca89a10242")]
 [assembly: System.Reflection.AssemblyProductAttribute("ASMS.Base")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ASMS.Base")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

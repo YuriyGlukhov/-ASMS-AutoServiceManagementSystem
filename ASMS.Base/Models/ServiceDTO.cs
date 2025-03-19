@@ -14,6 +14,5 @@ namespace ASMS.Base.Models
         public decimal Price { get; set; }
         public string CarBrand { get; set; }
         public TimeSpan Duration { get; set; }
-
     }
 }

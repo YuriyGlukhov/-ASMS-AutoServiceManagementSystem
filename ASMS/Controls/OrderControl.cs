@@ -41,10 +41,6 @@ namespace ASMS.Forms.Controls
             InitializeComponent();
         }
 
-        private void OrderControl_Load(object sender, EventArgs e)
-        {
-            LoadOrders();
-        }
         private void LoadOrders()
         {
             var orders = _orderService.Get();
@@ -54,16 +50,18 @@ namespace ASMS.Forms.Controls
                 order.ServicesInfo = string.Join(", ", order.Services.Select(s => s.Name));
             }
 
-            // Отображаем данные в DataGridView
             dataGridViewOrders.DataSource = orders;
 
-            // Настроим столбцы
             dataGridViewOrders.Columns["ServicesInfo"].HeaderText = "Услуга";
             dataGridViewOrders.Columns["ClientName"].HeaderText = "Клиент";
             dataGridViewOrders.Columns["CarInfo"].HeaderText = "Машина";
 
         }
-
+        private void OrderControl_Load(object sender, EventArgs e)
+        {
+            LoadOrders();
+        }
+        
         private void dataGridViewOrders_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridViewOrders.CurrentRow == null) return;
@@ -116,7 +114,9 @@ namespace ASMS.Forms.Controls
         {
             if (orderDTO != null)
             {
-                var updateOrderForm = new UpdateOrderForm(orderDTO,_clientService,_carService,_orderService,_serviceService,_clientsCarService);
+                var updateOrderForm = new UpdateOrderForm(orderDTO,_clientService,_carService,
+                                                           _orderService,_serviceService,
+                                                           _clientsCarService);
                 updateOrderForm.ShowDialog();
                 LoadOrders();
             }
@@ -130,9 +130,15 @@ namespace ASMS.Forms.Controls
         {
             if (orderDTO != null)
             {
-
-                _orderService.Remove(orderDTO);
-                LoadOrders();
+                try
+                {
+                    _orderService.Remove(orderDTO);
+                    LoadOrders();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             else
             {

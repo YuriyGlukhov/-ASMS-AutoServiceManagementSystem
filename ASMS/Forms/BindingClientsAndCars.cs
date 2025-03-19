@@ -21,19 +21,15 @@ namespace ASMS.Forms.Forms
 
         private int CarID = 0;
         private int ClientID = 0;
-        public BindingClientsAndCars(IClientsCarService clientsCarService, IEntityService<ClientDTO> clientService, IEntityService<CarDTO> carService)
+        public BindingClientsAndCars(IClientsCarService clientsCarService, 
+                                     IEntityService<ClientDTO> clientService, 
+                                     IEntityService<CarDTO> carService)
         {
             _clientsCarService = clientsCarService;
             _carService = carService;
             _clientService = clientService;
             InitializeComponent();
         }
-
-        private void BindingClientsAndCars_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void BindButton_Click(object sender, EventArgs e)
         {
 
@@ -76,6 +72,10 @@ namespace ASMS.Forms.Forms
             comboBoxClients.DataSource = clients;
             comboBoxClients.DisplayMember = "Name";
             comboBoxClients.ValueMember = "Id";
+        }
+        private void BindingClientsAndCars_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

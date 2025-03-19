@@ -31,7 +31,6 @@ namespace ASMS.Forms.Services
                 MessageBox.Show("Клиент или машина не найдены!");
                 return;
             }
-
             if (!client.Cars.Any(c => c.Id == carId))
             {
                 client.Cars.Add(car);

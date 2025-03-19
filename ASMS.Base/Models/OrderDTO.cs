@@ -18,7 +18,6 @@ namespace ASMS.Base.Models
         public int CarId { get; set; }
         public string? CarInfo { get; set; }
         public string? ServicesInfo { get; set; }
-
         public List<ServiceDTO> Services { get; set; } = new List<ServiceDTO>();
     }
 }

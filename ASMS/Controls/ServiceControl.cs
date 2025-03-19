@@ -84,8 +84,15 @@ namespace ASMS.Forms.Controls
         {
             if (serviceDTO != null)
             {
-                _serviceService.Remove(serviceDTO);
-                LoadServices();
+                try
+                {
+                    _serviceService.Remove(serviceDTO);
+                    LoadServices();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message); 
+                }
             }
             else
             {
